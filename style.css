@@ -5,9 +5,9 @@ body {
 }
 
 .modals {
-  max-width: 500px;
+  max-width: 700px;
   height: 200px;
-  box-shadow: 0px 0px 10px black;
+  box-shadow: 0px 0px 20px black;
   z-index: 2;
   margin-top: -3rem;
   display: block;
@@ -37,6 +37,7 @@ input {
   background: transparent;
   border-bottom: 1px solid black;
   transition: 1s ease-in-out;
+  cursor: url(img/pen.png), auto;
 }
 
 button {
@@ -45,65 +46,4 @@ button {
 
 .hasil {
   margin-top: 13rem;
-}
-
-.dark-mode {
-  width: 50px;
-  height: 50px;
-  box-shadow: 0px 0px 10px black;
-  cursor: pointer;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-img {
-  width: 35px;
-  transition: 1s ease-in-out;
-}
-
-.moon {
-  margin-top: 43px;
-}
-
-/* Dark Mode Class */
-.dark {
-  background-color: black;
-}
-
-.dark-text {
-  color: white;
-}
-
-.dark-container {
-  color: white;
-  border: 1px solid white;
-  box-shadow: 0px 0px 10px white, 0px 0px 30px white;
-}
-
-.dark-button {
-  color: white;
-  border: 1px solid white;
-}
-
-.dark-button:hover {
-  background-color: white;
-  color: black;
-}
-
-.dark-input {
-  color: white;
-  border-bottom: 1px solid white;
-}
-
-/* Ukuran Hp */
-@media (max-width: 576px) {
-  .hasil {
-    margin-top: 10rem;
-  }
-
-  .dark-mode {
-    position: absolute;
-    bottom: -60px;
-  }
 }

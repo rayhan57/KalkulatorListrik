@@ -61,35 +61,7 @@ function Hitung() {
   });
 }
 
-function darkMode() {
-  const judul = document.querySelector("h1");
-  const kotak = document.querySelector(".dark-mode");
-  const gambar = document.querySelector(".moon");
-  const container = document.querySelectorAll(".container");
-  const hasil = document.querySelector(".hasil");
-  const tombol = document.querySelectorAll("button");
-  const input = document.querySelectorAll("input");
-
-  kotak.addEventListener("click", function () {
-    hasil.style.boxShadow = "none";
-    hasil.style.border = "none";
-    document.body.classList.toggle("dark");
-    judul.classList.toggle("dark-text");
-    container.forEach((c) => {
-      c.classList.toggle("dark-container");
-    });
-    tombol.forEach((t) => {
-      t.classList.toggle("dark-button");
-    });
-    input.forEach((i) => {
-      i.classList.toggle("dark-input");
-    });
-
-    if (document.body.classList.contains("dark")) {
-      gambar.style.marginTop = "-50px";
-    } else {
-      gambar.style.marginTop = "";
-    }
-  });
-}
-darkMode();
+$(".nav-link").on("click", function () {
+  $(".nav-link").removeClass("active");
+  $(this).addClass("active");
+});

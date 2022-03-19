@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" id="home">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <title>Electric Calculator</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+  </head>
+  <body>
+    <!-- Modals -->
+    <div
+      class="container modals border border-dark rounded-3 position-absolute start-50 translate-middle"
+      style="top: 15rem"
+      data-aos="zoom-out-left"
+    >
+      <div class="row pt-3">
+        <div class="col fs-4 text-center">Masukan harga perkwh</div>
+      </div>
+      <div class="row">
+        <div class="col mt-2 text-center">
+          <input
+            style="width: 90%"
+            type="number"
+            class="rounded-0 fs-5 input-kwh"
+            aria-label="perkwh"
+            aria-describedby="basic-addon1"
+            onkeypress="Press(event)"
+          />
+        </div>
+      </div>
+      <div class="row ms-4 text-danger error">
+        Nominal yang anda masukan kurang
+      </div>
+      <div class="row mt-2 justify-content-center">
+        <button
+          type="button"
+          class="btn btn-outline-dark oke"
+          style="width: 90%"
+          onclick="Enter()"
+        >
+          Oke
+        </button>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-md navbar-dark bg-dark fixed-top"
+      data-aos="fade-down"
+      data-aos-easing="linear"
+      data-aos-duration="1500"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#home">Kalkulator Listrik</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#beranda"
+                >Kalkulator</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#kontak">Kontak</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tentang">Tentang</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Kotak -->
+    <div
+      class="container utama rounded-3"
+      style="margin-top: 5rem; padding-top: 3rem"
+      id="beranda"
+      data-aos="fade-left"
+      data-aos-anchor="#example-anchor"
+      data-aos-offset="500"
+      data-aos-duration="1500"
+    >
+      <!-- Judul Input -->
+      <div class="row mt-3 text-center">
+        <div class="col"><h2>Daya Listrik</h2></div>
+        <div class="col-3"></div>
+        <div class="col"><h2>Pemakaian perhari</h2></div>
+      </div>
+
+      <!-- Input -->
+      <div class="row mt-2 text-center">
+        <div class="col d-flex justify-content-evenly">
+          <!-- Daya -->
+          <input
+            type="number"
+            class="rounded-0 text-center fs-5 daya-listrik"
+            placeholder="Watt"
+            aria-label="watt"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="col">
+          <!-- Tombol -->
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            style="width: 100px"
+            onclick="Hitung()"
+          >
+            Hitung
+          </button>
+        </div>
+        <div class="col d-flex justify-content-evenly">
+          <!-- Pemakaian -->
+          <input
+            type="number"
+            class="rounded-0 text-center fs-5 pemakaian"
+            placeholder="Jam"
+            aria-label="jam"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+      </div>
+
+      <!-- Hasil -->
+      <div class="container hasil text-center">
+        <div class="row">
+          <!-- 1 Hari -->
+          <div
+            class="col-md-4 pb-4 d-flex flex-column justify-content-center align-items-center"
+          >
+            Biaya dalam 1 hari <br />
+            <div class="col harga"></div>
+          </div>
+          <!-- 7 Hari -->
+          <div
+            class="col-md-4 pb-4 d-flex flex-column justify-content-center align-items-center"
+          >
+            Biaya dalam 7 hari <br />
+            <div class="col harga"></div>
+          </div>
+          <!-- 30 Hari -->
+          <div
+            class="col-md-4 pb-4 d-flex flex-column justify-content-center align-items-center"
+          >
+            Biaya dalam 30 hari <br />
+            <div class="col harga"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kontak -->
+    <div
+      class="container pt-1"
+      id="kontak"
+      style="width: 400px"
+      data-aos="fade-right"
+      data-aos-offset="300"
+      data-aos-easing="ease-in-sine"
+    >
+      <h1 class="text-center fs-3" style="margin-top: 10rem">Kontak</h1>
+      <form name="contact-form">
+        <!-- Alert -->
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+          <symbol
+            id="check-circle-fill"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+            />
+          </symbol>
+          <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path
+              d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
+            />
+          </symbol>
+          <symbol
+            id="exclamation-triangle-fill"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+            />
+          </symbol>
+        </svg>
+        <div
+          class="alert alert-success d-flex align-items-center alert-dismissible fade show d-none"
+          role="alert"
+        >
+          <svg
+            class="bi flex-shrink-0 me-2"
+            width="24"
+            height="24"
+            role="img"
+            aria-label="Success:"
+          >
+            <use xlink:href="#check-circle-fill" />
+          </svg>
+          <div>Terimakasih atas masukan anda.</div>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+        <!-- Nama -->
+        <div class="mb-3">
+          <label for="exampleInputnama" class="form-label">Nama</label>
+          <input type="text" class="form-control" name="Nama" />
+        </div>
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="exampleInputEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" name="Email" />
+        </div>
+        <!-- Pesan -->
+        <div class="mb-3">
+          <label for="exampleInputPesan" class="form-label">Pesan</label>
+          <textarea class="form-control" rows="3" name="Pesan"></textarea>
+        </div>
+        <!-- Tombol Kirim -->
+        <button type="submit" class="btn btn-primary tombol-kirim">
+          Kirim
+        </button>
+        <button
+          class="btn btn-primary tombol-loading d-none"
+          type="button"
+          disabled
+        >
+          <span
+            class="spinner-grow spinner-grow-sm"
+            role="status"
+            aria-hidden="true"
+          ></span>
+          Tunggu...
+        </button>
+      </form>
+    </div>
+
+    <!-- Gelombang -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path
+        fill="#273036"
+        fill-opacity="1"
+        d="M0,64L48,96C96,128,192,192,288,186.7C384,181,480,107,576,96C672,85,768,139,864,181.3C960,224,1056,256,1152,250.7C1248,245,1344,203,1392,181.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+      ></path>
+    </svg>
+
+    <!-- Tentang -->
+    <div
+      class="container-fluid text-center text-white"
+      id="tentang"
+      style="background: #273036; padding-top: 7rem"
+    >
+      <div
+        class="row"
+        data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="1500"
+      >
+        <div class="col"><h1 class="fs-3">Tentang</h1></div>
+      </div>
+      <div
+        class="row mt-5 justify-content-center"
+        data-aos="fade-up"
+        data-aos-duration="3000"
+        style="font-family: sans-serif; color: #7e7f80"
+      >
+        <div class="col-3">
+          <img src="img/simple.png" width="50px" />
+          <p class="pt-3">Menghitung biaya listrik tanpa perlu ribet.</p>
+        </div>
+        <div class="col-3">
+          <img src="img/fast.png" width="50px" />
+          <p class="pt-3">Cepat dalam mengitung biaya listrik..</p>
+        </div>
+        <div class="col-3">
+          <img src="img/anywhere.png" width="50px" />
+          <p class="pt-3">Dapat digunakan dimana saja.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="container-fluid">
+      <div class="row">
+        <footer
+          class="text-center"
+          style="
+            background: #273036;
+            font-family: sans-serif;
+            padding-top: 30rem;
+            color: #7e7f80;
+          "
+        >
+          <p data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+            Copyright 2022. Rayhan Lingga Buana
+          </p>
+        </footer>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Script AOS -->
+    <script>
+      AOS.init();
+    </script>
+
+    <script src="script.js"></script>
+
+    <!-- Script Kontak -->
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbzGZeCcHNpoS72La0EuHzSsBpWCNOgyW_AkUIlvF5hPiuL7pFSPiZFHs1jPHE4pb6iV/exec";
+      const form = document.forms["contact-form"];
+      const tombolKirim = document.querySelector(".tombol-kirim");
+      const tombolLoading = document.querySelector(".tombol-loading");
+      const notifikasi = document.querySelector(".alert");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        tombolKirim.classList.toggle("d-none");
+        tombolLoading.classList.toggle("d-none");
+
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            tombolKirim.classList.toggle("d-none");
+            tombolLoading.classList.toggle("d-none");
+            notifikasi.classList.toggle("d-none");
+            form.reset();
+            console.log("Success!", response);
+          })
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
+  </body>
+</html>
