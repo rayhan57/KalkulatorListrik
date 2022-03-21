@@ -26,7 +26,7 @@
   <body>
     <!-- Modals -->
     <div
-      class="container modals border border-dark rounded-3 position-absolute start-50 translate-middle"
+      class="container modals rounded-3 position-absolute start-50 translate-middle"
       style="top: 15rem"
       data-aos="zoom-out-left"
     >
@@ -62,7 +62,8 @@
 
     <!-- Navbar -->
     <nav
-      class="navbar navbar-expand-md navbar-dark bg-dark fixed-top"
+      class="navbar navbar-expand-md navbar-dark fixed-top shadow"
+      style="background: #0f7dc2"
       data-aos="fade-down"
       data-aos-easing="linear"
       data-aos-duration="1500"
@@ -278,7 +279,7 @@
     <!-- Gelombang -->
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
       <path
-        fill="#273036"
+        fill="#0F7DC2"
         fill-opacity="1"
         d="M0,64L48,96C96,128,192,192,288,186.7C384,181,480,107,576,96C672,85,768,139,864,181.3C960,224,1056,256,1152,250.7C1248,245,1344,203,1392,181.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
       ></path>
@@ -288,7 +289,7 @@
     <section id="tentang">
       <div
         class="container-fluid text-center text-white"
-        style="background: #273036; padding-top: 7rem"
+        style="background: #0f7dc2; padding-top: 7rem"
       >
         <div
           class="row"
@@ -302,17 +303,17 @@
           class="row mt-5 justify-content-center"
           data-aos="fade-up"
           data-aos-duration="3000"
-          style="font-family: sans-serif; color: #7e7f80"
+          style="font-family: sans-serif"
         >
-          <div class="col-3">
+          <div class="col-md-3">
             <img src="img/simple.png" width="50px" />
             <p class="pt-3">Menghitung biaya listrik tanpa perlu ribet.</p>
           </div>
-          <div class="col-3">
+          <div class="col-md-3">
             <img src="img/fast.png" width="50px" />
             <p class="pt-3">Cepat dalam mengitung biaya listrik..</p>
           </div>
-          <div class="col-3">
+          <div class="col-md-3">
             <img src="img/anywhere.png" width="50px" />
             <p class="pt-3">Dapat digunakan dimana saja.</p>
           </div>
@@ -324,16 +325,15 @@
     <div class="container-fluid">
       <div class="row">
         <footer
-          class="text-center"
+          class="text-center text-white"
           style="
-            background: #273036;
+            background: #0f7dc2;
             font-family: sans-serif;
             padding-top: 30rem;
-            color: #7e7f80;
           "
         >
           <p data-aos="fade-up" data-aos-anchor-placement="center-bottom">
-            Copyright 2022. Rayhan Lingga Buana
+            © Copyright 2022. Rayhan Lingga Buana
           </p>
         </footer>
       </div>
@@ -361,29 +361,6 @@
     <script src="script.js"></script>
 
     <!-- Script Kontak -->
-    <script>
-      const scriptURL =
-        "https://script.google.com/macros/s/AKfycbzGZeCcHNpoS72La0EuHzSsBpWCNOgyW_AkUIlvF5hPiuL7pFSPiZFHs1jPHE4pb6iV/exec";
-      const form = document.forms["contact-form"];
-      const tombolKirim = document.querySelector(".tombol-kirim");
-      const tombolLoading = document.querySelector(".tombol-loading");
-      const notifikasi = document.querySelector(".alert");
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        tombolKirim.classList.toggle("d-none");
-        tombolLoading.classList.toggle("d-none");
-
-        fetch(scriptURL, { method: "POST", body: new FormData(form) })
-          .then((response) => {
-            tombolKirim.classList.toggle("d-none");
-            tombolLoading.classList.toggle("d-none");
-            notifikasi.classList.toggle("d-none");
-            form.reset();
-            console.log("Success!", response);
-          })
-          .catch((error) => console.error("Error!", error.message));
-      });
-    </script>
+    <script src="kontak.js"></script>
   </body>
 </html>
